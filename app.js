@@ -7,14 +7,17 @@ const secrets = require('./secrets');
 const app = express()
 const mta = new Mta({
   key: secrets.MTA_API_KEY, // only needed for mta.schedule() method
-  feed_id: 1                  // optional, default = 1
+  feed_id: 2                // L is on feed 2
 });
 
 //constants
-const LORIMER_STATION_ID = 617
+const LORIMER_STATION_ID = 617 //Is this actually right? This documentation is garbage
 
-
-
+mta.schedule(10).then(function (result) {
+  console.log(result)
+}).catch(function (err) {
+  console.log(err);
+});
 
 app.get('/', function (req, res) {
   res.send('Hello World!')
@@ -50,39 +53,3 @@ app.get('/lorimer/rockaway', function (req, res) {
 app.listen(3000, function () {
   console.log('Example app listening on port 3000!')
 })
-
-/*
-L10:
- { stop_id: 'L10',
-   stop_code: '',
-   stop_name: 'Lorimer St',
-   stop_desc: '',
-   stop_lat: '40.714063',
-   stop_lon: '-73.950275',
-   zone_id: '',
-   stop_url: '',
-   location_type: '1',
-   parent_station: '' },
-L10N:
- { stop_id: 'L10N',
-   stop_code: '',
-   stop_name: 'Lorimer St',
-   stop_desc: '',
-   stop_lat: '40.714063',
-   stop_lon: '-73.950275',
-   zone_id: '',
-   stop_url: '',
-   location_type: '0',
-   parent_station: 'L10' },
-L10S:
- { stop_id: 'L10S',
-   stop_code: '',
-   stop_name: 'Lorimer St',
-   stop_desc: '',
-   stop_lat: '40.714063',
-   stop_lon: '-73.950275',
-   zone_id: '',
-   stop_url: '',
-   location_type: '0',
-   parent_station: 'L10' },
-   */
