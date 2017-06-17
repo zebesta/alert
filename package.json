@@ -1,0 +1,16 @@
+{
+  "name": "alert",
+  "version": "1.0.0",
+  "description": "A simple daily alert app for NYCers on the go.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "zebesta",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.3",
+    "mta-gtfs": "^1.0.3"
+  },
+  "devDependencies": {}
+}
